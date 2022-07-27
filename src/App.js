@@ -6,42 +6,31 @@ import { Tab } from './Tab/Tab';
 const tableData = require("./db/data.json");
 
 function App() {
-    
+    const dep = "departures";
+    const arr = "arrivals";
     const [activeTable, setActiveTable] = useState([]);
+    const [activeName, setActiveName] = useState([]);
 
     useEffect(() => {
-        setActiveTable(tableData.departures)
-        console.log(tableData.departures);
+        setActiveTable(tableData[dep])
+        setActiveName(dep)
     }, []);
 
     
   return (
-
-    <div className="App">
+    <div className="main">
         <div className='main-table'>
             <div className='main-table_buttons'>
-                <button onClick={() => setActiveTable(tableData.departures)}>Depature</button>
-                <button onClick={() => setActiveTable(tableData.arrivals)}>Arrival</button>
+                <button onClick={() => {setActiveTable(tableData[dep]); setActiveName(dep)}}>Depature</button>
+                <button onClick={() => {setActiveTable(tableData[arr]); setActiveName(arr)}}>Arrival</button>
+            </div>
+            <div className='main-table_title'>
+              <p>{activeName}</p>
             </div>
             <div className='main-table_info'>
                 {tableData&& <Tab tableData = {activeTable} />}
             </div>
         </div>
-        
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
     </div>
   );
 }
