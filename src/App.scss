@@ -16,18 +16,22 @@ $btn_active: #393838;
     }
     max-width: 1020px;
     margin: 0 auto;
+
     .main-table {
         margin: 20px auto;
+
         &_title {
             border: 5px solid $tableBkg;
             border-bottom: 0px;
             margin: 0 auto;
             padding: 0 100px;
             background-color: $titleBkg;
+
             @media only screen and (max-width: 520px) {
                 padding: 0;
                 text-align: center;
             }
+
             p {
                 margin: 0;
                 padding: 20px;
@@ -36,10 +40,12 @@ $btn_active: #393838;
                 text-transform: capitalize;
             }
         }
+
         &_buttons {
             display: flex;
             justify-content: space-evenly;
             padding: 10px;
+
             button {
                 width: 40%;
                 cursor: pointer;
@@ -48,6 +54,10 @@ $btn_active: #393838;
                 text-align: center;
                 text-transform: capitalize;
                 background-color: $btn;
+
+                @media only screen and (max-width: 520px) {
+                  font-size: 20px;
+              }
                 &:hover {
                     background-color: $btn_hover;
                 }
@@ -56,29 +66,38 @@ $btn_active: #393838;
                 }
             }
         }
+
         &_info {
             background-color: $tableBkg;
             padding: 5px;
+
             &_time {
                 width: 20%;
             }
+
             &_destination {
                 width: 80%;
             }
+
             &_fnr {
                 width: 25%;
+
                 @media only screen and (max-width: 520px) {
                     display: none !important;
                 }
             }
+
             &_gate {
                 width: 20%;
+
                 @media only screen and (max-width: 520px) {
                     display: none !important;
                 }
             }
+
             &_status {
                 width: 55%;
+
                 @media only screen and (max-width: 520px) {
                     width: 100%;
                 }
@@ -87,6 +106,7 @@ $btn_active: #393838;
             &-brakedown {
                 width: 500px;
                 box-sizing: border-box;
+                
                 @media only screen and (max-width: 520px) {
                     max-width: 300px;
                 }
@@ -103,6 +123,7 @@ $btn_active: #393838;
                     height: 100%;
                     font-family: "Roboto";
                     font-size: 22px;
+
                     @media only screen and (max-width: 520px) {
                         font-size: 18px;
                     }
@@ -113,6 +134,7 @@ $btn_active: #393838;
                         background-color: $btn_active;
                     }
                 }
+
                 li {
                     display: flex;
 
@@ -133,6 +155,7 @@ $btn_active: #393838;
                         color: black;
                         font-size: 24px;
                         background-color: grey;
+
                         @media only screen and (max-width: 520px) {
                             font-size: 16px;
                         }
@@ -144,6 +167,7 @@ $btn_active: #393838;
                             margin: 0;
                             font-family: "Spline Sans Mono";
                             text-transform: uppercase;
+                            
                             @media only screen and (max-width: 520px) {
                                 font-size: 16px;
                             }
