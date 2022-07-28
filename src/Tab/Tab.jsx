@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Tab = ({ tableData }) => {
-    //console.log(tableData);
+
     const [timeTable, setTimeTable] = useState([]);
     const [sortBy, setSortBy] = useState([]);
 
@@ -20,13 +20,6 @@ const Tab = ({ tableData }) => {
         let nextDate = new Date(date * 1000);
         return nextDate.getHours() + ":" + nextDate.getMinutes();
     }
-
-    // function setMaxLengthDest(data) {
-    //     if (data.split("").length < 19) {
-    //     let tempText = data.split("").concat(Array(20-data.split("").length))
-    //        return tempText.join("");
-    //     };
-    // }
 
     return (
         <>
