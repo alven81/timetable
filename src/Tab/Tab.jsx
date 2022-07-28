@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 
 const Tab = ({ tableData }) => {
-
     const [timeTable, setTimeTable] = useState([]);
     const [sortBy, setSortBy] = useState([]);
+    const [sortKey, setSortKey] = useState([]);
 
     useEffect(() => {
         setTimeTable(tableData);
     }, [tableData]);
 
     function sortByField(item) {
-        return (a, b) => (a[item] > b[item] ? 1 : -1);
+        console.log(sortKey);
+        if (sortKey) {
+            return (a, b) => (a[item] > b[item] ? 1 : -1);
+        } else {
+            return (a, b) => (a[item] > b[item] ? -1 : 1);
+        }
     }
 
     tableData.sort(sortByField(sortBy));
@@ -25,87 +30,98 @@ const Tab = ({ tableData }) => {
         <>
             <ul>
                 <li>
-                <div className="main-table_info-brakedown">
-                    <div className="main-table_info_time">
-                        <button
-                            onClick={() => {
-                                setSortBy("sched");
-                            }}
-                        >
-                            TIME
-                        </button>
+                    <div className="main-table_info-brakedown">
+                        <div className="main-table_info_time">
+                            <button
+                                onClick={() => {
+                                    setSortKey(!sortKey);
+                                    setSortBy("sched");
+                                }}
+                            >
+                                {sortBy === "sched"
+                                    ? `TIME  ${sortKey ? "▼" : "▲"}`
+                                    : "TIME"}
+                            </button>
+                        </div>
+                        <div className="main-table_info_destination">
+                            <button
+                                onClick={() => {
+                                    setSortKey(!sortKey);
+                                    setSortBy("apname");
+                                }}
+                            >
+                                {sortBy === "apname"
+                                    ? `DESTINATION  ${sortKey ? "▼" : "▲"}`
+                                    : "DESTINATION"}
+                            </button>
+                        </div>
                     </div>
-                    <div className="main-table_info_destination">
-                        <button
-                            onClick={() => {
-                                setSortBy("apname");
-                            }}
-                        >
-                            DESTINATION
-                        </button>
-                    </div>
-                </div>
-                <div className="main-table_info-brakedown">
-                    <div className="main-table_info_fnr">
-                        <button
-                            onClick={() => {
-                                setSortBy("fnr");
-                            }}
-                        >
-                            FLIGHT
-                        </button>
-                    </div>
-                    <div className="main-table_info_gate">
-                        <button
-                            onClick={() => {
-                                setSortBy("terminal");
-                            }}
-                        >
-                            GATE
-                        </button>
-                    </div>
-                    <div className="main-table_info_status">
-                        <button
-                            onClick={() => {
-                                setSortBy("status");
-                            }}
-                        >
-                            REMARKS
-                        </button>
-                    </div>
+                    <div className="main-table_info-brakedown">
+                        <div className="main-table_info_fnr">
+                            <button
+                                onClick={() => {
+                                    setSortKey(!sortKey);
+                                    setSortBy("fnr");
+                                }}
+                            >
+                                {sortBy === "fnr"
+                                    ? `FLIGHT  ${sortKey ? "▼" : "▲"}`
+                                    : "FLIGHT"}
+                            </button>
+                        </div>
+                        <div className="main-table_info_gate">
+                            <button
+                                onClick={() => {
+                                    setSortKey(!sortKey);
+                                    setSortBy("terminal");
+                                }}
+                            >
+                                {sortBy === "terminal"
+                                    ? `GATE  ${sortKey ? "▼" : "▲"}`
+                                    : "GATE"}
+                            </button>
+                        </div>
+                        <div className="main-table_info_status">
+                            <button
+                                onClick={() => {
+                                    setSortKey(!sortKey);
+                                    setSortBy("status");
+                                }}
+                            >
+                                {sortBy === "status"
+                                    ? `REMARKS  ${sortKey ? "▼" : "▲"}`
+                                    : "REMARKS"}
+                            </button>
+                        </div>
                     </div>
                 </li>
-                {
-                    !timeTable ? (
-                        <p>Loading</p>
-                    ) : (
-                        timeTable.map((item) => (
-                            <li key={item.id}>
-                                <div className="main-table_info-brakedown">
-                                    <div className="main-table_info_time">
-                                        <p>{timeConverter(item.sched)}</p>
-                                    </div>
-                                    <div className="main-table_info_destination">
-                                        <p>{item.apname}</p>
-                                    </div>
+                {!timeTable ? (
+                    <p>Loading</p>
+                ) : (
+                    timeTable.map((item) => (
+                        <li key={item.id}>
+                            <div className="main-table_info-brakedown">
+                                <div className="main-table_info_time">
+                                    <p>{timeConverter(item.sched)}</p>
                                 </div>
-                                <div className="main-table_info-brakedown">
-                                    <div className="main-table_info_fnr">
-                                        <p>{item.fnr}</p>
-                                    </div>
-                                    <div className="main-table_info_gate">
-                                        <p>{item.terminal}</p>
-                                    </div>
-                                    <div className="main-table_info_status">
-                                        <p>{item.status}</p>
-                                    </div>
+                                <div className="main-table_info_destination">
+                                    <p>{item.apname}</p>
                                 </div>
-                            </li>
-                        ))
-                    )
-
-                    // <p>{tableData.arrivals[]}</p>
-                }
+                            </div>
+                            <div className="main-table_info-brakedown">
+                                <div className="main-table_info_fnr">
+                                    <p>{item.fnr}</p>
+                                </div>
+                                <div className="main-table_info_gate">
+                                    <p>{item.terminal}</p>
+                                </div>
+                                <div className="main-table_info_status">
+                                    <p>{item.status}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))
+                )}
             </ul>
         </>
     );

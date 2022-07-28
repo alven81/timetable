@@ -1,7 +1,6 @@
-import './App.scss';
-import { useEffect, useState } from 'react';
-import { Tab } from './Tab/Tab';
-
+import "./App.scss";
+import { useEffect, useState } from "react";
+import { Tab } from "./Tab/Tab";
 
 const tableData = require("./db/data.json");
 
@@ -12,27 +11,40 @@ function App() {
     const [activeName, setActiveName] = useState([]);
 
     useEffect(() => {
-        setActiveTable(tableData[dep])
-        setActiveName(dep)
+        setActiveTable(tableData[dep]);
+        setActiveName(dep);
     }, []);
 
-    
-  return (
-    <div className="main">
-        <div className='main-table'>
-            <div className='main-table_buttons'>
-                <button onClick={() => {setActiveTable(tableData[dep]); setActiveName(dep)}}>Depature</button>
-                <button onClick={() => {setActiveTable(tableData[arr]); setActiveName(arr)}}>Arrival</button>
-            </div>
-            <div className='main-table_title'>
-              <p>{activeName}</p>
-            </div>
-            <div className='main-table_info'>
-                {tableData&& <Tab tableData = {activeTable} />}
+    return (
+        <div className="main">
+            <div className="main-table">
+                <div className="main-table_buttons">
+                    <button
+                        onClick={() => {
+                            setActiveTable(tableData[dep]);
+                            setActiveName(dep);
+                        }}
+                    >
+                        {dep}
+                    </button>
+                    <button
+                        onClick={() => {
+                            setActiveTable(tableData[arr]);
+                            setActiveName(arr);
+                        }}
+                    >
+                        {arr}
+                    </button>
+                </div>
+                <div className="main-table_title">
+                    <p>{activeName}</p>
+                </div>
+                <div className="main-table_info">
+                    <Tab tableData={activeTable} />
+                </div>
             </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;

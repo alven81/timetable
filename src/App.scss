@@ -46,6 +46,7 @@ $btn_active: #393838;
                 padding: 5px;
                 font-size: 26px;
                 text-align: center;
+                text-transform: capitalize;
                 background-color: $btn;
                 &:hover {
                     background-color: $btn_hover;
@@ -65,13 +66,13 @@ $btn_active: #393838;
                 width: 80%;
             }
             &_fnr {
-                width: 30%;
+                width: 25%;
                 @media only screen and (max-width: 520px) {
                     display: none !important;
                 }
             }
             &_gate {
-                width: 15%;
+                width: 20%;
                 @media only screen and (max-width: 520px) {
                     display: none !important;
                 }
@@ -130,18 +131,22 @@ $btn_active: #393838;
                         box-sizing: border-box;
                         border: 1px solid black;
                         color: black;
-                        font-size: 26px;
+                        font-size: 24px;
                         background-color: grey;
                         @media only screen and (max-width: 520px) {
                             font-size: 16px;
                         }
                         p {
+                            font-size: 22px;
                             color: black;
                             text-align: left;
                             padding: 5px;
                             margin: 0;
                             font-family: "Spline Sans Mono";
                             text-transform: uppercase;
+                            @media only screen and (max-width: 520px) {
+                                font-size: 16px;
+                            }
                         }
                     }
                 }
