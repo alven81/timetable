@@ -4,6 +4,9 @@
 $tableBkg: #202020;
 
 .main {
+    @media only screen and (max-width: 1020px) {
+        max-width: 520px;
+    }
     max-width: 1020px;
     //width: 1440px;
     margin: 0 auto;
@@ -39,24 +42,36 @@ $tableBkg: #202020;
             background-color: $tableBkg;
             padding: 5px;
             &_time {
-                width: 100px;
+                //width: 100px;
+                width: 20%;
             }
             &_destination {
-                width: 420px;
+                //width: 420px;
+                width: 80%;
             }
             &_fnr {
-                width: 150px;
+                //width: 150px;
+                width: 30%;
             }
             &_gate {
-                width: 90px;
+                //width: 90px;
+                width: 15%;
             }
             &_status {
-                width: 280px;
+                //width: 280px;
+                width: 55%;
+            }
+
+            &-brakedown {
+                //border: none;
+                width: 500px;
+                box-sizing: border-box;
             }
 
             ul {
                 padding: 0;
                 margin: 0;
+
                 button {
                     //display: inline;
                     background-color: dimgrey;
@@ -68,6 +83,13 @@ $tableBkg: #202020;
                 }
                 li {
                     display: flex;
+                    
+                    @media only screen and (max-width: 1020px) {
+                        flex-wrap: wrap;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
                     justify-content: center;
                     list-style-type: none;
                     border: 3px solid $tableBkg;

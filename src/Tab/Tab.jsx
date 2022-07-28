@@ -16,9 +16,9 @@ const Tab = ({ tableData }) => {
     tableData.sort(sortByField(sortBy));
 
     function timeConverter(time) {
-        let date = Date.parse(time)/1000;
+        let date = Date.parse(time) / 1000;
         let nextDate = new Date(date * 1000);
-        return nextDate.getHours() + ":" + nextDate.getMinutes()
+        return nextDate.getHours() + ":" + nextDate.getMinutes();
     }
 
     // function setMaxLengthDest(data) {
@@ -32,7 +32,8 @@ const Tab = ({ tableData }) => {
         <>
             <ul>
                 <li>
-                <div className='main-table_info_time'>
+                <div className="main-table_info-brakedown">
+                    <div className="main-table_info_time">
                         <button
                             onClick={() => {
                                 setSortBy("sched");
@@ -41,7 +42,7 @@ const Tab = ({ tableData }) => {
                             TIME
                         </button>
                     </div>
-                    <div className='main-table_info_destination'>
+                    <div className="main-table_info_destination">
                         <button
                             onClick={() => {
                                 setSortBy("apname");
@@ -50,7 +51,9 @@ const Tab = ({ tableData }) => {
                             DESTINATION
                         </button>
                     </div>
-                    <div className='main-table_info_fnr'>
+                </div>
+                <div className="main-table_info-brakedown">
+                    <div className="main-table_info_fnr">
                         <button
                             onClick={() => {
                                 setSortBy("fnr");
@@ -59,7 +62,7 @@ const Tab = ({ tableData }) => {
                             FLIGHT
                         </button>
                     </div>
-                    <div className='main-table_info_gate'>
+                    <div className="main-table_info_gate">
                         <button
                             onClick={() => {
                                 setSortBy("terminal");
@@ -68,7 +71,7 @@ const Tab = ({ tableData }) => {
                             GATE
                         </button>
                     </div>
-                    <div className='main-table_info_status'>
+                    <div className="main-table_info_status">
                         <button
                             onClick={() => {
                                 setSortBy("status");
@@ -77,7 +80,7 @@ const Tab = ({ tableData }) => {
                             REMARKS
                         </button>
                     </div>
-
+                    </div>
                 </li>
                 {
                     !timeTable ? (
@@ -85,22 +88,25 @@ const Tab = ({ tableData }) => {
                     ) : (
                         timeTable.map((item) => (
                             <li key={item.id}>
-                                                                <div className='main-table_info_time'>
-                                    <p>{timeConverter(item.sched)}</p>
+                                <div className="main-table_info-brakedown">
+                                    <div className="main-table_info_time">
+                                        <p>{timeConverter(item.sched)}</p>
+                                    </div>
+                                    <div className="main-table_info_destination">
+                                        <p>{item.apname}</p>
+                                    </div>
                                 </div>
-                                <div className='main-table_info_destination'>
-                                    <p>{item.apname}</p>
+                                <div className="main-table_info-brakedown">
+                                    <div className="main-table_info_fnr">
+                                        <p>{item.fnr}</p>
+                                    </div>
+                                    <div className="main-table_info_gate">
+                                        <p>{item.terminal}</p>
+                                    </div>
+                                    <div className="main-table_info_status">
+                                        <p>{item.status}</p>
+                                    </div>
                                 </div>
-                                <div className='main-table_info_fnr'>
-                                    <p>{item.fnr}</p>
-                                </div>
-                                <div className='main-table_info_gate'>
-                                    <p>{item.terminal}</p>
-                                </div>
-                                <div className='main-table_info_status'>
-                                    <p>{item.status}</p>
-                                </div>
-
                             </li>
                         ))
                     )
